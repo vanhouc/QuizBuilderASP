@@ -1,12 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace QuizBuilder.Models
 {
-    public class User
+    public partial class User
     {
+        public User()
+        {
+            this.QuizAttempts = new List<QuizAttempt>();
+        }
+
         public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,5 +17,6 @@ namespace QuizBuilder.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
+        public virtual ICollection<QuizAttempt> QuizAttempts { get; set; }
     }
 }
