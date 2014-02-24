@@ -12,7 +12,7 @@ namespace QuizBuilder.Models.Mapping
 
             // Properties
             this.Property(t => t.UserID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             this.Property(t => t.FirstName)
                 .IsRequired()
