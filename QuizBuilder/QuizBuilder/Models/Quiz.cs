@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace QuizBuilder.Models
 {
-    public partial class Quizze
+    public partial class Quiz
     {
-        public Quizze()
+        public Quiz()
         {
             this.QuizAttempts = new List<QuizAttempt>();
             this.Scenarios = new List<Scenario>();

@@ -3,9 +3,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace QuizBuilder.Models.Mapping
 {
-    public class QuestionResponsMap : EntityTypeConfiguration<QuestionRespons>
+    public class QuestionResponseMap : EntityTypeConfiguration<QuestionResponse>
     {
-        public QuestionResponsMap()
+        public QuestionResponseMap()
         {
             // Primary Key
             this.HasKey(t => t.QuestionResponseID);

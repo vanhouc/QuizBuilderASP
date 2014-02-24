@@ -7,7 +7,7 @@ namespace QuizBuilder.Models
     {
         public QuizAttempt()
         {
-            this.QuestionResponses = new List<QuestionRespons>();
+            this.QuestionResponses = new List<QuestionResponse>();
         }
 
         public int QuizAttemptID { get; set; }
@@ -15,8 +15,8 @@ namespace QuizBuilder.Models
         public int QuizID { get; set; }
         public double Score { get; set; }
         public System.DateTime QuizDate { get; set; }
-        public virtual ICollection<QuestionRespons> QuestionResponses { get; set; }
-        public virtual Quizze Quizze { get; set; }
+        public virtual ICollection<QuestionResponse> QuestionResponses { get; set; }
+        public virtual Quiz Quizze { get; set; }
         public virtual User User { get; set; }
     }
 }

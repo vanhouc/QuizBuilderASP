@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace QuizBuilder.Models
 {
-    public partial class QuestionRespons
+    public partial class QuestionResponse
     {
         public int QuestionResponseID { get; set; }
         public int QuestionOptionID { get; set; }

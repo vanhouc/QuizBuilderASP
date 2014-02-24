@@ -7,7 +7,7 @@ namespace QuizBuilder.Models
     {
         public QuestionOption()
         {
-            this.QuestionResponses = new List<QuestionRespons>();
+            this.QuestionResponses = new List<QuestionResponse>();
         }
 
         public int QuestionOptionID { get; set; }
@@ -17,6 +17,6 @@ namespace QuizBuilder.Models
         public bool IsRichText { get; set; }
         public bool IsCorrect { get; set; }
         public virtual Question Question { get; set; }
-        public virtual ICollection<QuestionRespons> QuestionResponses { get; set; }
+        public virtual ICollection<QuestionResponse> QuestionResponses { get; set; }
     }
 }
