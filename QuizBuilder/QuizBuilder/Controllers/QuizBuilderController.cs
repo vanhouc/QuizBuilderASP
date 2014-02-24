@@ -20,5 +20,13 @@ namespace QuizBuilder.Controllers
         {
             return View();
         }
+        public ActionResult UserQuizzes()
+        {
+            return View();
+        }
+        public ActionResult UserResults()
+        {
+            return View();
+        }
 	}
 }

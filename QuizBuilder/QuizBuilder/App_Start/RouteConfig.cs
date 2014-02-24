@@ -18,6 +18,16 @@ namespace QuizBuilder
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "QuizBuilder", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "UserQuizzes",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "QuizBuilder", action = "UserQuizzes", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "UserResults",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "QuizBuilder", action = "UserResults", id = UrlParameter.Optional }
+            );
         }
     }
 }
