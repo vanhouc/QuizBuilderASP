@@ -10,7 +10,7 @@ namespace QuizBuilder.Controllers
     {
         //
         // GET: /QuizBuilder/
-        public ActionResult Index()
+        public ActionResult Default()
         {
             return View();
         }
@@ -25,6 +25,14 @@ namespace QuizBuilder.Controllers
             return View();
         }
         public ActionResult UserResults()
+        {
+            return View();
+        }
+        public ActionResult AdminHome()
+        {
+            return View();
+        }
+        public ActionResult Register()
         {
             return View();
         }
