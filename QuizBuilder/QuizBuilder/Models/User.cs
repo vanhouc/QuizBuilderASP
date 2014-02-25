@@ -9,7 +9,6 @@ namespace QuizBuilder.Models
         {
             this.QuizAttempts = new List<QuizAttempt>();
         }
-
         public int UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

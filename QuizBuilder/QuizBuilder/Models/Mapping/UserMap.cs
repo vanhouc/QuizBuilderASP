@@ -12,27 +12,27 @@ namespace QuizBuilder.Models.Mapping
 
             // Properties
             this.Property(t => t.UserID)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
 
             this.Property(t => t.FirstName)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(50);
 
             this.Property(t => t.LastName)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(50);
 
             this.Property(t => t.Username)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(50);
 
             this.Property(t => t.Password)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(50);
 
             this.Property(t => t.Email)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(50);
 
             // Table & Column Mappings
             this.ToTable("Users");
