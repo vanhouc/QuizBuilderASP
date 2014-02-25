@@ -27,10 +27,10 @@ namespace QuizBuilder.Services
             }
             return true;
         }
-        public IEnumerable<User> getUsers()
+        public User[] getUsers()
         {
             return (from u in _db.Users
-                    select u).AsEnumerable<User>();
+                    select u).ToArray<User>();
         }
     }
 }
