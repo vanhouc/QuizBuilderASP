@@ -7,7 +7,7 @@ using System.Linq;
 namespace QuizBuilder.Test
 {
     [TestClass]
-    public class QuizBuilderControllerTest
+    public class UserModelTest
     {
         [TestMethod]
         public void CreateAndDeleteUser()
