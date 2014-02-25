@@ -14,7 +14,7 @@ namespace QuizBuilder.Services
         {
             _db = new QuizBuilderContext();
         }
-        public bool createUser(User newUser)
+        public bool AddUser(User newUser)
         {
             try
             {
@@ -27,7 +27,20 @@ namespace QuizBuilder.Services
             }
             return true;
         }
-        public User[] getUsers()
+        public bool DeleteUser(User user)
+        {
+            try
+            {
+                _db.Users.Remove(user);
+                _db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+        public User[] GetUsers()
         {
             return (from u in _db.Users
                     select u).ToArray<User>();

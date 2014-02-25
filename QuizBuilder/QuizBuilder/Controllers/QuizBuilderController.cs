@@ -37,7 +37,7 @@ namespace QuizBuilder.Controllers
         public ActionResult AdminUsers()
         {
             UserService userService = new UserService();
-            return View(userService.getUsers());
+            return View(userService.GetUsers());
         }
         public ActionResult Register()
         {
@@ -50,7 +50,7 @@ namespace QuizBuilder.Controllers
             if (ModelState.IsValid)
             {
                 UserService userService = new UserService();
-                if (userService.createUser(model))
+                if (userService.AddUser(model))
                     return View("UserHome");
                 else
                 {
