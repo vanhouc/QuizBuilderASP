@@ -15,13 +15,13 @@ namespace QuizBuilder
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "QuizBuilder", action = "Default", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "QuizBuilder", action = "Default" }
             );
             routes.MapRoute(
                 name: "UserQuizzes",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "QuizBuilder", action = "UserQuizzes", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "QuizBuilder", action = "UserQuizzes" }
             );
             routes.MapRoute(
                 name: "UserResults",
@@ -30,8 +30,8 @@ namespace QuizBuilder
             );
             routes.MapRoute(
                 name: "AdminHome",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "QuizBuilder", action = "AdminHome", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "QuizBuilder", action = "AdminHome" }
             );
             routes.MapRoute(
                 name: "AdminUsers",
