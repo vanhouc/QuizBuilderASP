@@ -1,4 +1,4 @@
-﻿
+﻿@model QuizBuilder.Models.User
 @{
     ViewBag.Title = "UserHome";
     Layout = "~/Views/QuizBuilder/_QuizBuilderLayout.cshtml";
@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1>Welcome [User]</h1>
+        <h1>Welcome @Model.Username</h1>
         <p>This page will feature everything you need to excel on your quizzes!</p>
     </div>
     <ul class="nav nav-tabs">
