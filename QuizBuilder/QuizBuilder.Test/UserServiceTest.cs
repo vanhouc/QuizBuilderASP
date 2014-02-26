@@ -26,7 +26,7 @@ namespace QuizBuilder.Test
             };
             Assert.AreEqual(testUser, userService.AddUser(testUser));
             Assert.IsTrue(userService.GetUsers().Any(x => x.Username == "testuser"));
-            Assert.AreNotEqual(testUser, userService.DeleteUser(testUser));
+            userService.DeleteUser(testUser);
             Assert.IsFalse(userService.GetUsers().Any(x => x.Username == "testuser"));
         }
     }
