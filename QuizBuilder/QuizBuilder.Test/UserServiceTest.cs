@@ -13,7 +13,7 @@ namespace QuizBuilder.Test
         [TestMethod]
         public void AddAndDeleteUserTest()
         {
-            UserService userService = new UserService();
+            UserService userService = UserService.Instance;
             User testUser = new User
             {
                 UserID = 0,
@@ -24,9 +24,9 @@ namespace QuizBuilder.Test
                 Email = "test@test.com",
                 IsAdmin = false
             };
-            Assert.IsTrue(userService.AddUser(testUser));
+            Assert.AreEqual(testUser, userService.AddUser(testUser));
             Assert.IsTrue(userService.GetUsers().Any(x => x.Username == "testuser"));
-            Assert.IsTrue(userService.DeleteUser(testUser));
+            Assert.AreNotEqual(testUser, userService.DeleteUser(testUser));
             Assert.IsFalse(userService.GetUsers().Any(x => x.Username == "testuser"));
         }
     }

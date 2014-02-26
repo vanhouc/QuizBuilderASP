@@ -184,6 +184,7 @@
     <Compile Include="Models\QuizBuilderContext.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\Scenario.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserService.cs" />

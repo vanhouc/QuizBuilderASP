@@ -18,9 +18,9 @@ namespace QuizBuilder.Controllers
         }
         //
         // GET: /QuizBuilder/UserHome/
-        public ActionResult UserHome()
+        public ActionResult UserHome(User user)
         {
-            return View();
+            return View(user);
         }
         public ActionResult UserQuizzes()
         {
@@ -36,7 +36,7 @@ namespace QuizBuilder.Controllers
         }
         public ActionResult AdminUsers()
         {
-            UserService userService = new UserService();
+            UserService userService = UserService.Instance;
             return View(userService.GetUsers());
         }
         public ActionResult Register()
@@ -49,9 +49,10 @@ namespace QuizBuilder.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserService userService = new UserService();
-                if (userService.AddUser(model))
-                    return View("UserHome");
+                UserService userService = UserService.Instance;
+                User newUser = userService.AddUser(model);
+                if (newUser != null)
+                    return View("UserHome", newUser);
                 else
                 {
                     ModelState.AddModelError("", "Invalid Submission");

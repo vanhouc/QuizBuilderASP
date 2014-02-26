@@ -6,43 +6,41 @@ using QuizBuilder.Models;
 
 namespace QuizBuilder.Services
 {
-    public class UserService
+    public sealed class UserService
     {
-        private QuizBuilderContext _db;
+        private static readonly UserService instance = new UserService();
 
-        public UserService()
+        private UserService()
         {
-            _db = new QuizBuilderContext();
+            db = new QuizBuilderContext();
         }
-        public bool AddUser(User newUser)
+
+        public static UserService Instance
         {
-            try
+            get
             {
-                _db.Users.Add(newUser);
-                _db.SaveChanges();
+                return instance;
             }
-            catch
-            {
-                return false;
-            }
-            return true;
         }
-        public bool DeleteUser(User user)
+        private QuizBuilderContext db;
+
+        public User AddUser(User newUser)
         {
-            try
-            {
-                _db.Users.Remove(user);
-                _db.SaveChanges();
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
+            User toAdd = newUser;
+            db.Users.Add(toAdd);
+            db.SaveChanges();
+            return toAdd;
+        }
+        public User DeleteUser(User user)
+        {
+            User toDelete = user;
+            db.Users.Remove(toDelete);
+            db.SaveChanges();
+            return toDelete;
         }
         public User[] GetUsers()
         {
-            return (from u in _db.Users
+            return (from u in db.Users
                     select u).ToArray<User>();
         }
     }
