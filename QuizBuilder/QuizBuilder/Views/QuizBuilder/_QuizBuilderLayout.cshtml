@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Header -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=@Url.Action("Default", "QuizBuilder")>QuizBuilder</a>
+        </div>
+        <!-- Content -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href=@Url.Action("UserHome", "QuizBuilder")><div class="glyphicon glyphicon-home"></div> Home</a></li>
+                <li><a href=@Url.Action("UserQuizzes", "QuizBuilder")><div class="glyphicon glyphicon-pencil"></div> Take Quiz</a></li>
+                <li><a href=@Url.Action("UserResults", "QuizBuilder")><div class="glyphicon glyphicon-list-alt"></div> Results</a></li>
+                <li><a href=@Url.Action("Contact", "Home")><div class="glyphicon glyphicon-bullhorn"></div> Contact Us</a></li>
+            </ul>
+            <div class="nav navbar-right">
+                <a href=@Url.Action("Register", "QuizBuilder") class="btn btn-default navbar-btn">Register</a>
+                <a href=@Url.Action("Login", "QuizBuilder") class="btn btn-default navbar-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
