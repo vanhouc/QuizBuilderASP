@@ -11,7 +11,7 @@ namespace QuizBuilder.Test
     public class UserServiceTest
     {
         [TestMethod]
-        public void AddAndDeleteUserTest()
+        public void ServiceUserTest()
         {
             UserService userService = UserService.Instance;
             User testUser = new User
