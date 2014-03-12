@@ -48,6 +48,11 @@ namespace QuizBuilder
                 url: "{controller}/{action}",
                 defaults: new { controller = "QuizBuilder", action = "Register" }
             );
+            routes.MapRoute(
+                name: "Login",
+                url: "{controller}/{action}",
+                defaults: new { controller = "QuizBuilder", action = "Login" }
+                );
         }
     }
 }

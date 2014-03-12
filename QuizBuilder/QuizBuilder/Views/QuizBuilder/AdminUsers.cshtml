@@ -54,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.IsAdmin)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+            @Html.ActionLink("Edit", "EditUser", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "UserDetails", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "DeleteUser", new { id=item.UserID })
         </td>
     </tr>
 }

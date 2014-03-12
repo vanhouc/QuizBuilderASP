@@ -183,6 +183,7 @@
     <Compile Include="Models\QuizAttempt.cs" />
     <Compile Include="Models\QuizBuilderContext.cs" />
     <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Scenario.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -247,6 +248,10 @@
     <Content Include="Views\QuizBuilder\AdminHome.cshtml" />
     <Content Include="Views\QuizBuilder\Register.cshtml" />
     <Content Include="Views\QuizBuilder\AdminUsers.cshtml" />
+    <Content Include="Views\QuizBuilder\EditUser.cshtml" />
+    <Content Include="Views\QuizBuilder\DeleteUser.cshtml" />
+    <Content Include="Views\QuizBuilder\UserDetails.cshtml" />
+    <Content Include="Views\QuizBuilder\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
