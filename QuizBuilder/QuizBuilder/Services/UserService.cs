@@ -7,78 +7,76 @@ using System.Data.Entity;
 
 namespace QuizBuilder.Services
 {
-    public sealed class UserService
+    public static class UserService
     {
-        private static readonly UserService instance = new UserService();
-
-        private UserService()
+        public static User AddUser(User newUser)
         {
-            db = new QuizBuilderContext();
-        }
-
-        public static UserService Instance
-        {
-            get
+            using (QuizBuilderContext db = new QuizBuilderContext())
             {
-                return instance;
-            }
-        }
-        private QuizBuilderContext db;
-
-        public User AddUser(User newUser)
-        {
-            User toAdd = newUser;
-            db.Users.Add(toAdd);
-            db.SaveChanges();
-            return toAdd;
-        }
-        public User DeleteUser(User user)
-        {
-            User toDelete = user;
-            db.Users.Remove(toDelete);
-            db.SaveChanges();
-            return toDelete;
-        }
-        public User[] GetUsers()
-        {
-            return (from u in db.Users
-                    select u).ToArray<User>();
-        }
-        public User ValidateLogin(LoginModel login)
-        {
-            try
-            {
-                return db.Users.First(x => x.Username == login.Username && x.Password == login.Password);
-            }
-            catch
-            {
-                return null;
-            }
-        }
-        public void SaveChanges(User user)
-        {
-            if (db.Entry(user).State == EntityState.Modified)
+                User toAdd = newUser;
+                db.Users.Add(toAdd);
                 db.SaveChanges();
-            if (db.Entry(user).State == EntityState.Detached)
-            {
-                db.Users.Attach(user);
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                return toAdd;
             }
-            if (db.Entry(user).State == EntityState.Unchanged)
+        }
+        public static User DeleteUser(int id)
+        {
+            using (QuizBuilderContext db = new QuizBuilderContext())
             {
-                db.Entry(user).State = EntityState.Modified;
+                User toDelete = db.Users.Find(id);
+                db.Users.Remove(toDelete);
                 db.SaveChanges();
+                return toDelete;
             }
-
         }
-        public void ReloadUser(User user)
+        public static User[] GetUsers()
         {
-            db.Entry(user).Reload();
+            using (QuizBuilderContext db = new QuizBuilderContext())
+            {
+                return (from u in db.Users
+                        select u).ToArray<User>();
+            }
         }
-        public User FindUser(int id)
+        public static User ValidateLogin(LoginModel login)
         {
-            return db.Users.Find(id);
+            using (QuizBuilderContext db = new QuizBuilderContext())
+            {
+                try
+                {
+                    User user = db.Users.First(x => x.Username == login.Username && x.Password == login.Password);
+                    return db.Users.Find(user.UserID);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
+        public static void SaveChanges(User user)
+        {
+            using (QuizBuilderContext db = new QuizBuilderContext())
+            {
+                if (db.Entry(user).State == EntityState.Modified)
+                    db.SaveChanges();
+                if (db.Entry(user).State == EntityState.Detached)
+                {
+                    db.Users.Attach(user);
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                if (db.Entry(user).State == EntityState.Unchanged)
+                {
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+        public static User FindUser(int id)
+        {
+            using (QuizBuilderContext db = new QuizBuilderContext())
+            {
+                return db.Users.Find(id);
+            }
         }
     }
 }

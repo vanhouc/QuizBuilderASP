@@ -12,7 +12,6 @@ namespace QuizBuilder.Controllers
 {
     public class QuizBuilderController : Controller
     {
-        UserService userService = UserService.Instance;
         //
         // GET: /QuizBuilder/
         public ActionResult Default()
@@ -24,7 +23,18 @@ namespace QuizBuilder.Controllers
         public ActionResult UserHome(User user)
         {
             if (user != null)
-                return View(user);
+            {
+                if (UserService.FindUser(user.UserID).IsAdmin == true)
+                    return View("AdminHome", user);
+                if (UserService.FindUser(user.UserID).IsAdmin == false)
+                {
+                    return View("UserHome", user);
+                }
+                else
+                {
+                    return RedirectToAction("UserLogin");
+                }
+            }
             else
                 return RedirectToAction("UserLogin");
         }
@@ -46,7 +56,7 @@ namespace QuizBuilder.Controllers
         }
         public ActionResult AdminUsers()
         {
-            return View(userService.GetUsers());
+            return PartialView(UserService.GetUsers());
         }
         public ActionResult Register()
         {
@@ -58,9 +68,9 @@ namespace QuizBuilder.Controllers
         {
             if (ModelState.IsValid)
             {
-                User newUser = userService.AddUser(model);
+                User newUser = UserService.AddUser(model);
                 if (newUser != null)
-                    return View("UserHome", newUser);
+                    return RedirectToAction("UserHome");
                 else
                 {
                     ModelState.AddModelError("", "Invalid Submission");
@@ -74,22 +84,24 @@ namespace QuizBuilder.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = userService.ValidateLogin(model);
+                User user = UserService.ValidateLogin(model);
                 if (user != null)
-                    return View("UserHome", user);
+                    return UserHome(user);
             }
             return RedirectToAction("Login");
         }
-        private ActionResult RedirectToLocal(string returnUrl)
+        public ActionResult UserDetails(int? id)
         {
-            if (Url.IsLocalUrl(returnUrl))
+            if (id == null)
             {
-                return Redirect(returnUrl);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            else
+            User user = UserService.FindUser(id.Value);
+            if (user == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
+            return PartialView("UserDetails", user);
         }
 
         // GET: /QuizAuto/Edit/5
@@ -99,7 +111,7 @@ namespace QuizBuilder.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = userService.FindUser(id.Value);
+            User user = UserService.FindUser(id.Value);
             if (user == null)
             {
                 return HttpNotFound();
@@ -116,7 +128,7 @@ namespace QuizBuilder.Controllers
         {
             if (ModelState.IsValid)
             {
-                userService.SaveChanges(user);
+                UserService.SaveChanges(user);
                 return RedirectToAction("AdminUsers");
             }
             return View(user);
@@ -129,7 +141,7 @@ namespace QuizBuilder.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = userService.FindUser(id.Value);
+            User user = UserService.FindUser(id.Value);
             if (user == null)
             {
                 return HttpNotFound();
@@ -142,9 +154,8 @@ namespace QuizBuilder.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = userService.FindUser(id);
-            userService.DeleteUser(user);
-            return RedirectToAction("AdminUsers");
+            UserService.DeleteUser(id);
+            return RedirectToAction("AdminHome");
         }
     }
 }

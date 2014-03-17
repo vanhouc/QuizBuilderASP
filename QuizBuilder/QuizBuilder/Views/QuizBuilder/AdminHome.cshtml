@@ -1,6 +1,7 @@
-﻿@{
+﻿@model QuizBuilder.Models.User
+@{
     ViewBag.Title = "AdminHome";
-    Layout = "~/Views/QuizBuilder/_QuizBuilderLayout.cshtml";
+    Layout = "~/Views/QuizBuilder/_Layout.cshtml";
 }
 
 <div class="jumbotron">
@@ -8,8 +9,20 @@
     <p>This page will feature controls tailored just for you.</p>
 </div>
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="admin_users">Admin Panel</a></li>
-    <li><a href="#">Messages</a></li>
+    <li class="active"><a href="#Home" data-toggle="tab">Home</a></li>
+    <li><a href="#Profile" data-toggle="tab">Profile</a></li>
+    <li><a href="#AdminPanel" data-toggle="tab">Admin Panel</a></li>
+    <li><a href="#" data-toggle="tab">Messages</a></li>
 </ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="Home">
+        @Html.Partial("UserDetails", @Model)
+    </div>
+    <div class="tab-pane" id="Profile">
+        @Html.Partial("UserDetails", @Model)
+    </div>
+    <div class="tab-pane" id="AdminPanel">
+        @Html.Action("AdminUsers")
+    </div>
+</div>

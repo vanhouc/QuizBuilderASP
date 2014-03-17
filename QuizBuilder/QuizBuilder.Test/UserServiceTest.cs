@@ -13,7 +13,6 @@ namespace QuizBuilder.Test
         [TestMethod]
         public void ServiceUserTest()
         {
-            UserService userService = UserService.Instance;
             User testUser = new User
             {
                 UserID = 0,
@@ -24,15 +23,14 @@ namespace QuizBuilder.Test
                 Email = "test@test.com",
                 IsAdmin = false
             };
-            Assert.AreEqual(testUser, userService.AddUser(testUser));
-            Assert.IsTrue(userService.GetUsers().Any(x => x.Username == "testuser"));
-            userService.DeleteUser(testUser);
-            Assert.IsFalse(userService.GetUsers().Any(x => x.Username == "testuser"));
+            Assert.AreEqual(testUser, UserService.AddUser(testUser));
+            Assert.IsTrue(UserService.GetUsers().Any(x => x.Username == "testuser"));
+            UserService.DeleteUser(testUser.UserID);
+            Assert.IsFalse(UserService.GetUsers().Any(x => x.Username == "testuser"));
         }
         [TestMethod]
         public void EditUserTest()
         {
-            UserService userService = UserService.Instance;
             User testUser = new User
             {
                 UserID = 0,
@@ -43,17 +41,16 @@ namespace QuizBuilder.Test
                 Email = "test@test.com",
                 IsAdmin = false
             };
-            userService.AddUser(testUser);
+            UserService.AddUser(testUser);
             testUser.Username = "tuser";
-            userService.SaveChanges(testUser);
-            userService.ReloadUser(testUser);
+            UserService.SaveChanges(testUser);
             using (QuizBuilderContext db = new QuizBuilderContext())
             {
                 User updatedUser = db.Users.First(x => x.Username == "tuser");
                 Assert.AreEqual(testUser.Username, updatedUser.Username);
             }
-            userService.DeleteUser(testUser);
-            Assert.IsNull(userService.FindUser(testUser.UserID));
+            UserService.DeleteUser(testUser.UserID);
+            Assert.IsNull(UserService.FindUser(testUser.UserID));
         }
     }
 }
