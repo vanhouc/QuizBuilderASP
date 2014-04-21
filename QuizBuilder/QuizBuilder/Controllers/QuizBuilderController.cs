@@ -70,7 +70,7 @@ namespace QuizBuilder.Controllers
             {
                 User newUser = UserService.AddUser(model);
                 if (newUser != null)
-                    return RedirectToAction("UserHome");
+                    return View("UserHome", newUser);
                 else
                 {
                     ModelState.AddModelError("", "Invalid Submission");
