@@ -16,11 +16,11 @@ namespace QuizBuilder.Models.Mapping
 
             this.Property(t => t.ScenarioName)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(255);
 
             this.Property(t => t.ScenarioText)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(255);
 
             // Table & Column Mappings
             this.ToTable("Scenarios");
@@ -32,7 +32,7 @@ namespace QuizBuilder.Models.Mapping
             this.Property(t => t.IsRichText).HasColumnName("IsRichText");
 
             // Relationships
-            this.HasRequired(t => t.Quizze)
+            this.HasRequired(t => t.Quiz)
                 .WithMany(t => t.Scenarios)
                 .HasForeignKey(d => d.QuizID);
 

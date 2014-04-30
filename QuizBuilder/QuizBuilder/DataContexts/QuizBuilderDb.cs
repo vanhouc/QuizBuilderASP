@@ -1,17 +1,18 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using QuizBuilder.Models.Mapping;
+using QuizBuilder.Models;
 
-namespace QuizBuilder.Models
+namespace QuizBuilder.DataContexts
 {
-    public partial class QuizBuilderContext : DbContext
+    public partial class QuizBuilderDb : DbContext
     {
-        static QuizBuilderContext()
+        static QuizBuilderDb()
         {
-            Database.SetInitializer<QuizBuilderContext>(null);
+            Database.SetInitializer<QuizBuilderDb>(null);
         }
 
-        public QuizBuilderContext()
+        public QuizBuilderDb()
             : base("Name=QuizBuilderContext")
         {
         }

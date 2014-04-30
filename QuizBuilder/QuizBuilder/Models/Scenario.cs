@@ -17,6 +17,6 @@ namespace QuizBuilder.Models
         public string ScenarioText { get; set; }
         public bool IsRichText { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
-        public virtual Quiz Quizze { get; set; }
+        public virtual Quiz Quiz { get; set; }
     }
 }

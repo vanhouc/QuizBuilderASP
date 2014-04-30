@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using QuizBuilder.Models;
+using QuizBuilder.DataContexts;
+using QuizBuilder.Services;
 
 namespace QuizBuilder.Controllers
 {
@@ -16,7 +18,7 @@ namespace QuizBuilder.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDb())))
         {
         }
 
@@ -82,8 +84,17 @@ namespace QuizBuilder.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserService.AddUser(new User
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Username = model.UserName,
+                        Password = UserManager.PasswordHasher.HashPassword(model.Password),
+                        Email = model.EmailAddress,
+                        IsAdmin = false
+                    });
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Default", "QuizBuilder");
                 }
                 else
                 {
@@ -372,7 +383,7 @@ namespace QuizBuilder.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Default", "QuizBuilder");
             }
         }
 

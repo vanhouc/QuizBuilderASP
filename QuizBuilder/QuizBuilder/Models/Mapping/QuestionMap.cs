@@ -16,11 +16,11 @@ namespace QuizBuilder.Models.Mapping
 
             this.Property(t => t.QuestionContent)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(255);
 
             this.Property(t => t.AnswerContent)
                 .IsRequired()
-                .HasMaxLength(1);
+                .HasMaxLength(255);
 
             // Table & Column Mappings
             this.ToTable("Questions");

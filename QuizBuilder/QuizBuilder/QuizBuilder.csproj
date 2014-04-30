@@ -165,9 +165,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuizBuilderController.cs" />
+    <Compile Include="DataContexts\IdentityDb.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Mapping\QuestionMap.cs" />
@@ -181,13 +183,15 @@
     <Compile Include="Models\QuestionOption.cs" />
     <Compile Include="Models\QuestionResponse.cs" />
     <Compile Include="Models\QuizAttempt.cs" />
-    <Compile Include="Models\QuizBuilderContext.cs" />
+    <Compile Include="DataContexts\QuizBuilderDb.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Scenario.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\QuizService.cs" />
+    <Compile Include="Services\ScenarioService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -252,6 +256,11 @@
     <Content Include="Views\QuizBuilder\DeleteUser.cshtml" />
     <Content Include="Views\QuizBuilder\UserDetails.cshtml" />
     <Content Include="Views\QuizBuilder\Login.cshtml" />
+    <Content Include="Views\QuizBuilder\QuizList.cshtml" />
+    <Content Include="Views\QuizBuilder\CreateQuiz.cshtml" />
+    <Content Include="Views\QuizBuilder\QuizManage.cshtml" />
+    <Content Include="Views\QuizBuilder\ScenarioList.cshtml" />
+    <Content Include="Views\QuizBuilder\CreateScenario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

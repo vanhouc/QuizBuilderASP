@@ -6,17 +6,23 @@ using System.Web;
 
 namespace QuizBuilder.Models
 {
-    public class QuizViewModel
+    public class QuizUserViewModel
     {
-    }
-    public class LoginModel
-    {
-        public string Username { get; set; }
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-    }
-    public class SessionModel
-    {
-        public string Username { get; set; }
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get; set; }
     }
 }

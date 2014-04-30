@@ -9,20 +9,23 @@
     <p>This page will feature controls tailored just for you.</p>
 </div>
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#Home" data-toggle="tab">Home</a></li>
-    <li><a href="#Profile" data-toggle="tab">Profile</a></li>
-    <li><a href="#AdminPanel" data-toggle="tab">Admin Panel</a></li>
-    <li><a href="#" data-toggle="tab">Messages</a></li>
+    <li class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
+    <li><a href="#Users" data-toggle="tab">Users</a></li>
+    <li><a href="#Quizzes" data-toggle="tab">Quizzes</a></li>
+    <li><a href="#Scenarios" data-toggle="tab">Scenarios</a></li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane active" id="Home">
-        @Html.Partial("UserDetails", @Model)
+    <div class="tab-pane active" id="Profile">
+        @Html.Action("UserDetails")
     </div>
-    <div class="tab-pane" id="Profile">
-        @Html.Partial("UserDetails", @Model)
-    </div>
-    <div class="tab-pane" id="AdminPanel">
+    <div class="tab-pane" id="Users">
         @Html.Action("AdminUsers")
+    </div>
+    <div class="tab-pane" id="Quizzes">
+        @Html.Action("ListQuizzes")
+    </div>
+    <div class="tab-pane" id="Scenarios">
+        @Html.Action("ListScenarios")
     </div>
 </div>

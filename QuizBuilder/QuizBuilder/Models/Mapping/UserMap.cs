@@ -28,7 +28,7 @@ namespace QuizBuilder.Models.Mapping
 
             this.Property(t => t.Password)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(255);
 
             this.Property(t => t.Email)
                 .IsRequired()
