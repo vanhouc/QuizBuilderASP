@@ -65,5 +65,38 @@ namespace QuizBuilder.Services
                 return toAdd;
             }
         }
+
+        public static QuizAttempt FindQuizAttempt(int quizAttemptId)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                return db.QuizAttempts.Find(quizAttemptId);
+            }
+        }
+
+        public static QuizAttempt UpdateQuizAttempt(QuizAttempt updatedAttempt)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                QuizAttempt currentAttempt = db.QuizAttempts.Find(updatedAttempt.QuizAttemptID);
+                if (currentAttempt != null)
+                {
+                    currentAttempt.QuizDate = updatedAttempt.QuizDate;
+                    currentAttempt.Score = updatedAttempt.Score;
+                    db.SaveChanges();
+                    return currentAttempt;
+                }
+                else
+                    return currentAttempt;
+            }
+        }
+
+        public static QuizAttempt[] GetUserAttempts(int userId)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                return db.QuizAttempts.Where(a => a.UserID == userId).ToArray();
+            }
+        }
     }
 }

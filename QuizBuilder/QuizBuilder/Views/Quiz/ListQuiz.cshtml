@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<QuizBuilder.Models.Quiz>
+@if(User.IsInRole("admin"))
+{ 
 @Html.ActionLink("Create New", "CreateQuiz", null, new { @class = "btn btn-default", @style = "margin: 5px" })
+}
 <table class="table">
     <tr>
         <th>
@@ -11,7 +14,10 @@
         <th>
             @Html.DisplayNameFor(model => model.QuestionPoolID)
         </th>
+        @if(User.IsInRole("admin"))
+        { 
         <th></th>
+        }
         <th></th>
     </tr>
 
@@ -27,11 +33,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.QuestionPoolID)
             </td>
+            @if(User.IsInRole("admin"))
+            { 
             <td>
                 @Html.ActionLink("Manage", "ManageQuiz", "Quiz", new {quizId = item.QuizID }, new { @class = "btn btn-default", @style = "margin: 5px" })
             </td>
+            }
             <td>
-                @Html.ActionLink("Take", "TakeQuiz", "Quiz", new { quizId = item.QuizID }, new { @class = "btn btn-default", @style = "margin: 5px" })  
+                @Html.ActionLink("Take", "NewQuiz", "Quiz", new { quizId = item.QuizID }, new { @class = "btn btn-default", @style = "margin: 5px" })  
             </td>
         </tr>
     }

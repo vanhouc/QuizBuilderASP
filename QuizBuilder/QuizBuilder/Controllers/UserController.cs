@@ -109,19 +109,19 @@ namespace QuizBuilder.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        [AllowAnonymous]
         //
         // GET: /QuizBuilder/
         public ActionResult Home()
         {
-            if (HttpContext.User.IsInRole("admin"))
-                return View("HomeAdmin");
-            if (HttpContext.User.IsInRole("user"))
-                return View("HomeUser");
-            return RedirectToAction("Login");
+            return View();
         }
         //
         // GET: /QuizBuilder/UserHome/
+        [AllowAnonymous]
+        public ActionResult Contacts()
+        {
+            return View();
+        }
         public ActionResult UserQuizzes()
         {
             return View();
@@ -271,7 +271,7 @@ namespace QuizBuilder.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "QuizBuilder");
+                return RedirectToAction("Index", "User");
             }
         }
 

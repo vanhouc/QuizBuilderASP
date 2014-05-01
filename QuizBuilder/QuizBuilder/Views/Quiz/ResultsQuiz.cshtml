@@ -1,7 +1,39 @@
-﻿
+﻿@model IEnumerable<QuizBuilder.Models.QuizAttempt>
+
 @{
-    ViewBag.Title = "UserResults";
-    Layout = "~/Views/QuizBuilder/_Layout.cshtml";
+    ViewBag.Title = "ResultsQuiz";
 }
 
-<h2>UserResults</h2>
+<h2>ResultsQuiz</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuizDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuizDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

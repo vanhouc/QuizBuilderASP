@@ -16,11 +16,15 @@
                 <li><a href="#">&laquo;</a></li>
                 @for (int i = 0; i < ((Question[])ViewData["QuestionArray"]).Length; i++ )
                 {
-                    <li><a href="#@i"></a>@i</li>
+                    <li>@Html.ActionLink(i.ToString(), "ShowQuestion", new { quizAttemptId = Model.QuizAttemptID, questionId = (((Question[])ViewData["QuestionArray"])[i]).QuestionID })</li>
                 }
                 <li><a href="#">&raquo;</a></li>
             </ul>
         </div>
+        <div class="panel-body">
+            @Html.Action("ShowQuestion", new {quizAttemptId = Model.QuizAttemptID, questionId = (int)ViewData["SelectedQuestion"] })
+        </div>
     </div>
+    @Html.ActionLink("Finish Quiz", "FinishQuiz", new { quizAttemptId = Model.QuizAttemptID }, new { @class = "btn btn-default" })
 </div>
 

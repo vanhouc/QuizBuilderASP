@@ -8,22 +8,24 @@
 </div>
 <ul class="nav nav-tabs">
     <li class="active"><a href="#Profile" data-toggle="tab">Profile</a></li>
+    @if(User.IsInRole("admin"))
+    { 
     <li><a href="#Users" data-toggle="tab">Users</a></li>
     <li><a href="#Quizzes" data-toggle="tab">Quizzes</a></li>
-    <li><a href="#Scenarios" data-toggle="tab">Scenarios</a></li>
+    }
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane active" id="Profile">
         @Html.Action("ManageUser")
     </div>
+    @if(User.IsInRole("admin"))
+    { 
     <div class="tab-pane" id="Users">
         @Html.Action("ListUser")
     </div>
     <div class="tab-pane" id="Quizzes">
         @Html.Action("ListQuiz", "Quiz")
     </div>
-    <div class="tab-pane" id="Scenarios">
-        @Html.Action("ListScenario", "Scenario")
-    </div>
+    }
 </div>

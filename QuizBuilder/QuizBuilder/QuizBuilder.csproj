@@ -238,10 +238,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\HomeUser.cshtml" />
     <Content Include="Views\Quiz\TakeQuiz.cshtml" />
-    <Content Include="Views\Quiz\ResultsQuiz.cshtml" />
-    <Content Include="Views\User\HomeAdmin.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\ListUser.cshtml" />
     <Content Include="Views\User\DeleteUser.cshtml" />
@@ -259,6 +257,8 @@
     <Content Include="Views\Question\ManageQuestion.cshtml" />
     <Content Include="Views\Question\ManageOption.cshtml" />
     <Content Include="Views\Quiz\ShowQuestion.cshtml" />
+    <Content Include="Views\Quiz\ResultsQuiz.cshtml" />
+    <Content Include="Views\User\Contacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

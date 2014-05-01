@@ -3,9 +3,24 @@
 <div class="panel-body">
     <h3>@(((Question)ViewData["Question"]).QuestionContent)</h3>
     <div class="btn-group-vertical">
-        @foreach(QuestionOption option in (Question)ViewData["QuestionOptions"])
+        @foreach (QuestionOption option in (QuestionOption[])ViewData["QuestionOptions"])
         {
-                @Html.ActionLink(option.OptionText, "PickAnswer", "Quiz", new { optionId = option.QuestionOptionID }, new { @class = "btn btn-default" })
+            if ((QuestionResponse)ViewData["ExistingResponse"] != null)
+            {
+                QuestionResponse existingResponse = (QuestionResponse)ViewData["ExistingResponse"];
+                if (existingResponse.QuestionOptionID == option.QuestionOptionID)
+                {
+                    @Html.ActionLink(option.OptionText, "PickQuestion", "Quiz", new { quizAttemptId = ((QuizAttempt)ViewData["Attempt"]).QuizAttemptID, questionOptionId = option.QuestionOptionID }, new { @class = "btn btn-default active" })
+                }
+                else
+                {
+                    @Html.ActionLink(option.OptionText, "PickQuestion", "Quiz", new { quizAttemptId = ((QuizAttempt)ViewData["Attempt"]).QuizAttemptID, questionOptionId = option.QuestionOptionID }, new { @class = "btn btn-default" })
+                }
+            }
+            else
+            {
+                @Html.ActionLink(option.OptionText, "PickQuestion", "Quiz", new { quizAttemptId = ((QuizAttempt)ViewData["Attempt"]).QuizAttemptID, questionOptionId = option.QuestionOptionID }, new { @class = "btn btn-default" })
+            }
         }
     </div>
 </div>
