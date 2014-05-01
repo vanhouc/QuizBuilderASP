@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QuizBuilder.Models.QuestionOption>
+@Html.ActionLink("Create New", "CreateOption", null, new { @class = "btn btn-default", @style = "margin: 5px" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionSequence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OptionText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRichText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsCorrect)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionSequence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OptionText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRichText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsCorrect)
+        </td>
+        <td>
+            @Html.ActionLink("Manage", "ManageOption", null, new { @class = "btn btn-default", @style = "margin: 5px" })
+        </td>
+    </tr>
+}
+
+</table>

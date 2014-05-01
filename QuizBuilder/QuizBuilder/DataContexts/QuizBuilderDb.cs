@@ -13,7 +13,7 @@ namespace QuizBuilder.DataContexts
         }
 
         public QuizBuilderDb()
-            : base("Name=QuizBuilderContext")
+            : base("Name=QuizBuilderDb")
         {
         }
 

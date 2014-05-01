@@ -1,0 +1,60 @@
+﻿@model QuizBuilder.Models.QuestionOption
+
+@*@{Model.QuestionID = (int)ViewData["QuestionID"];}*@
+
+@using (Html.BeginForm("CreateOption", "Question", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>QuestionOption</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionID)
+                @Html.ValidationMessageFor(model => model.QuestionID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionSequence, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionSequence)
+                @Html.ValidationMessageFor(model => model.OptionSequence)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionText)
+                @Html.ValidationMessageFor(model => model.OptionText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsRichText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsRichText)
+                @Html.ValidationMessageFor(model => model.IsRichText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsCorrect, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsCorrect)
+                @Html.ValidationMessageFor(model => model.IsCorrect)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

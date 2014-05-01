@@ -16,7 +16,7 @@ namespace QuizBuilder
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "QuizBuilder", action = "Default" }
+                defaults: new { controller = "User", action = "Index" }
             );
         }
     }

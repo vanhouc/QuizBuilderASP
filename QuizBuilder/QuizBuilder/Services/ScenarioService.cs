@@ -28,5 +28,34 @@ namespace QuizBuilder.Services
                         select s).ToArray<Scenario>();
             }
         }
+
+        public static Scenario FindScenario(int scenarioId)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                return db.Scenarios.Find(scenarioId);
+            }
+        }
+
+        public static Scenario UpdateScenario(Scenario updatedScenario)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                Scenario currentScenario = db.Scenarios.Find(updatedScenario.ScenarioID);
+                if (currentScenario != null)
+                {
+                    currentScenario.ScenarioName = updatedScenario.ScenarioName;
+                    currentScenario.QuizID = updatedScenario.QuizID;
+                    currentScenario.ScenarioSequence = updatedScenario.ScenarioSequence;
+                    currentScenario.ScenarioText = updatedScenario.ScenarioText;
+                    currentScenario.Questions = updatedScenario.Questions;
+                    currentScenario.IsRichText = updatedScenario.IsRichText;
+                    db.SaveChanges();
+                    return currentScenario;
+                }
+                else
+                    return currentScenario;
+            }
+        }
     }
 }

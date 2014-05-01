@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QuizBuilder.Models.Question>
+@Html.ActionLink("Create New", "CreateQuestion", null, new { @class = "btn btn-default", @style = "margin: 5px" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Scenario.ScenarioName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnswerContent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScenarioID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnswerContent)
+        </td>
+        <td>
+            @Html.ActionLink("Manage", "ManageQuestion", "Question", new { questionID = item.QuestionID }, new { @class = "btn btn-default", @style = "margin: 5px" })
+        </td>
+    </tr>
+}
+
+</table>

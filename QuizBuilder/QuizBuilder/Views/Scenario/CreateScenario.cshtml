@@ -1,0 +1,58 @@
+﻿@model QuizBuilder.Models.Scenario
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Scenario</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuizID, "QuizID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("QuizID",@ViewData["QuizID"] as SelectList, String.Empty)
+                @Html.ValidationMessageFor(model => model.QuizID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScenarioSequence, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScenarioSequence)
+                @Html.ValidationMessageFor(model => model.ScenarioSequence)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScenarioName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScenarioName)
+                @Html.ValidationMessageFor(model => model.ScenarioName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScenarioText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScenarioText)
+                @Html.ValidationMessageFor(model => model.ScenarioText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsRichText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsRichText)
+                @Html.ValidationMessageFor(model => model.IsRichText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,11 @@
+﻿@using QuizBuilder.Models
+
+<div class="panel-body">
+    <h3>@(((Question)ViewData["Question"]).QuestionContent)</h3>
+    <div class="btn-group-vertical">
+        @foreach(QuestionOption option in (Question)ViewData["QuestionOptions"])
+        {
+                @Html.ActionLink(option.OptionText, "PickAnswer", "Quiz", new { optionId = option.QuestionOptionID }, new { @class = "btn btn-default" })
+        }
+    </div>
+</div>

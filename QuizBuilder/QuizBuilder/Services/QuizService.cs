@@ -28,5 +28,42 @@ namespace QuizBuilder.Services
                         select q).ToArray<Quiz>();
             }
         }
+
+        public static Quiz FindQuiz(int quizId)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                return db.Quizzes.Find(quizId);
+            }
+        }
+
+        public static Quiz UpdateQuiz(Quiz updatedQuiz)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                Quiz currentQuiz = db.Quizzes.Find(updatedQuiz.QuizID);
+                if (currentQuiz != null)
+                {
+                    currentQuiz.QuizName = updatedQuiz.QuizName;
+                    currentQuiz.QuizName = updatedQuiz.QuizAuthor;
+                    currentQuiz.QuestionPoolID = updatedQuiz.QuestionPoolID;
+                    db.SaveChanges();
+                    return currentQuiz;
+                }
+                else
+                    return currentQuiz;
+            }
+        }
+
+        public static QuizAttempt AddQuizAttempt(QuizAttempt quizAttempt)
+        {
+            using (QuizBuilderDb db = new QuizBuilderDb())
+            {
+                QuizAttempt toAdd = quizAttempt;
+                db.QuizAttempts.Add(toAdd);
+                db.SaveChanges();
+                return toAdd;
+            }
+        }
     }
 }

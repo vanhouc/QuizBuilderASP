@@ -1,0 +1,26 @@
+﻿@using QuizBuilder.Models
+
+@model QuizBuilder.Models.QuizAttempt
+@{
+    ViewBag.Title = "UserQuizzes";
+}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>QuizBuilder</h1>
+        <p>Welcome to QuizBuilder! The best site for taking quizzes on the internet!</p>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <ul class="pagination">
+                <li><a href="#">&laquo;</a></li>
+                @for (int i = 0; i < ((Question[])ViewData["QuestionArray"]).Length; i++ )
+                {
+                    <li><a href="#@i"></a>@i</li>
+                }
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+

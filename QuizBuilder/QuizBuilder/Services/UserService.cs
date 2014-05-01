@@ -5,6 +5,8 @@ using System.Web;
 using QuizBuilder.Models;
 using System.Data.Entity;
 using QuizBuilder.DataContexts;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace QuizBuilder.Services
 {

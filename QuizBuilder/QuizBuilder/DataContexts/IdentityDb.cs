@@ -10,7 +10,7 @@ namespace QuizBuilder.DataContexts
     public class IdentityDb : IdentityDbContext<ApplicationUser>
     {
         public IdentityDb()
-            : base("DefaultConnection")
+            : base("IdentityDb")
         {
         }
     }
